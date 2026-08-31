@@ -36,7 +36,7 @@
             }
           }
 
-          private var _model: LazyState<Model>
+          private var _model: SwiftUI.LazyState<Model>
 
           private var $model: Binding<Model> {
             get {
@@ -125,7 +125,7 @@
             }
           }
 
-          private var _model: LazyState<Model>
+          private var _model: SwiftUI.LazyState<Model>
 
           private var $model: Binding<Model> {
             get {
@@ -178,7 +178,7 @@
             }
           }
 
-          private var _model: LazyState<Model>
+          private var _model: SwiftUI.LazyState<Model>
 
           private var $model: Binding<Model> {
             get {
@@ -253,7 +253,7 @@
             }
           }
 
-          private var _model: LazyState<Model>
+          private var _model: SwiftUI.LazyState<Model>
 
           private var $model: Binding<Model> {
             get {
@@ -325,7 +325,7 @@
             }
           }
 
-          fileprivate var _model: LazyState<Model>
+          fileprivate var _model: SwiftUI.LazyState<Model>
 
           fileprivate var $model: Binding<Model> {
             get {
