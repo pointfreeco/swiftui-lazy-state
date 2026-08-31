@@ -42,7 +42,7 @@ public struct LazyStateMacro: AccessorMacro, PeerMacro {
     }
     var declarations: [DeclSyntax] = [
       """
-      \(raw: property.modifiers)var \(raw: property.backingName): LazyState<\(raw: property.type)>
+      \(raw: property.modifiers)var \(raw: property.backingName): SwiftUI.LazyState<\(raw: property.type)>
       """,
       """
       \(raw: property.modifiers)var \(raw: property.projectedName): Binding<\(raw: property.type)> {
