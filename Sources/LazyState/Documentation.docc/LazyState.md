@@ -44,15 +44,67 @@ struct FeatureView: View {
 
 The macro expands to the same kind of code that SwiftUI's own `@State` macro expands to.
 
-### Resetting state
+### Parent-child communication to existing lazy state
 
 Once the lazy state has been initialized it will not be re-initialized when the view is given new
-parameters. To create a fresh model when a parameter changes, change the view's identity:
+parameters. To propagate changes from the parent to the child you can employ one of two techniques
+depending on your situation:
 
-```swift
-FeatureView(region: region)
-  .id(region)
-```
+* **Resetting state**: You can completely blow away existing state and re-instantiate fresh state
+by changing by reassigning the state from scratch:
+
+  ```diff
+   import LazyState
+   import SwiftUI
+
+   struct FeatureView: View {
+  +  let region: MapRegion
+     @LazyState private var model: FeatureModel
+     init(region: MapRegion) {
+  +    self.region = region
+       _model = LazyState { FeatureModel(region: region) }
+     }
+     var body: some View {
+       VStack {
+         Text(model.title)
+         TextField("Query", text: $model.query)
+       }
+  +    .onChange(of: region) {
+  +      model.regionUpdated(region)
+  +    }
+     }
+   }
+  ```
+
+  This requires you to hold onto the data that can cause the state to reset and then listen for
+changes to that data.
+
+* **Updating child state from the parent**: If you do not want to totally reset the child view's
+model, but instead communicate new information to it from a parent, you can employ the above pattern
+and invoke a method on the model instead of reassigning the model:
+
+  ```diff
+   import LazyState
+   import SwiftUI
+
+   struct FeatureView: View {
+  +  let region: MapRegion
+     @LazyState private var model: FeatureModel
+     init(region: MapRegion) {
+  +    self.region = region
+       _model = LazyState { FeatureModel(region: region) }
+     }
+     var body: some View {
+       VStack {
+         Text(model.title)
+         TextField("Query", text: $model.query)
+       }
+  +    .onChange(of: region) {
+  +      model.regionUpdated(region)
+  +    }
+     }
+   }
+  ```
 
 ## Topics
 
