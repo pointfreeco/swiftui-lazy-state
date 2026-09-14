@@ -76,7 +76,7 @@ by changing by reassigning the state from scratch:
    }
   ```
 
- This requires you to hold onto the data that can cause the state to reset and then listen for
+  This requires you to hold onto the data that can cause the state to reset and then listen for
 changes to that data.
 
 * **Updating child state from the parent**: If you do not want to totally reset the child view's
