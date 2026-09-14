@@ -54,6 +54,36 @@ FeatureView(region: region)
   .id(region)
 ```
 
+### Parent-child communication to existing lazy state
+
+If you do not want to totally reset the child view's model, but instead communicate new information
+to it from a parent, you can employ aspects of SwiftUI's default pattern, by passing this state
+explicitly to the child view, and using the `onChange(of:)` or `task(id:)` view modifier to pass it
+to the child model:
+
+```diff
+ import LazyState
+ import SwiftUI
+
+ struct FeatureView: View {
++  let region: MapRegion
+   @LazyState private var model: FeatureModel
+   init(region: MapRegion) {
++    self.region = region
+     _model = LazyState { FeatureModel(region: region) }
+   }
+   var body: some View {
+     VStack {
+       Text(model.title)
+       TextField("Query", text: $model.query)
+     }
++    .onChange(of: region) {
++      model.regionUpdated(region)
++    }
+   }
+ }
+```
+
 ## Topics
 
 ### Declaring lazy state
