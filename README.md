@@ -1,5 +1,8 @@
 # @LazyState
 
+[![CI](https://github.com/pointfreeco/swiftui-lazy-state/actions/workflows/ci.yml/badge.svg)](https://github.com/pointfreeco/swiftui-lazy-state/actions/workflows/ci.yml)
+[![Slack](https://img.shields.io/badge/slack-chat-informational.svg?label=Slack&logo=slack)](https://www.pointfree.co/slack-invite)
+
 A macro for dynamically initializing observable references in SwiftUI views.
 
 ## Learn More
