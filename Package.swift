@@ -40,6 +40,7 @@ let package = Package(
     .testTarget(
       name: "LazyStateTests",
       dependencies: [
+        "LazyState",
         "LazyStateMacros",
         .product(name: "MacroTesting", package: "swift-macro-testing"),
         .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
