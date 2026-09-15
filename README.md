@@ -90,8 +90,8 @@ SwiftUI doesn't have this tool. Or why `@State` isn't lazy by default. A few rea
     applications in certain edge cases. There was a moment during the iOS 17 beta that `@State` was
     made lazy, but it was ultimately reverted.
   * One must be aware of how view identity works to wield this tool properly. Once a view's state
-    is initialized it cannot be updated from the outside by providing a new parameter. The only way
-    to reset the state is to change the view's identity.
+    is initialized it cannot be updated from the outside by providing a new parameter. The state
+    must be updated by other means, such as using `onChange(of:)` or `task(id:)` in the view.
 
 The pattern that Apple shows in its many demo apps requires you to hold onto optional state as well
 as any parameters you want to pass to the object:
