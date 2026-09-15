@@ -70,7 +70,7 @@ by changing by reassigning the state from scratch:
          TextField("Query", text: $model.query)
        }
   +    .onChange(of: region) {
-  +      model.regionUpdated(region)
+  +      model = FeatureModel(region: region)
   +    }
      }
    }
