@@ -91,7 +91,8 @@ SwiftUI doesn't have this tool. Or why `@State` isn't lazy by default. A few rea
     made lazy, but it was ultimately reverted.
   * One must be aware of how view identity works to wield this tool properly. Once a view's state
     is initialized it cannot be updated from the outside by providing a new parameter. The state
-    must be updated by other means, such as using `onChange(of:)` or `task(id:)` in the view.
+    must be updated by other means, such as using `onChange(of:)` or `task(id:)` in the view,
+    or changing the view's identity.
 
 The pattern that Apple shows in its many demo apps requires you to hold onto optional state as well
 as any parameters you want to pass to the object:
